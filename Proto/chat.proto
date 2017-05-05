@@ -8,6 +8,13 @@ message SendMessageRequest {
     required string text = 4;
     required string topic = 5;
 }
+message SendMessageRequest200 {
+    required string access_token = 1;
+    required string from = 2;
+    required string to = 3;
+    required string text = 4;
+    required string topic = 5;
+}
 
 
 message SendMessageResponse {
