@@ -437,6 +437,423 @@ static SendMessageRequest* defaultSendMessageRequestInstance = nil;
 }
 @end
 
+@interface SendMessageRequest200 ()
+@property (strong) NSString* accessToken;
+@property (strong) NSString* pb_from;
+@property (strong) NSString* to;
+@property (strong) NSString* text;
+@property (strong) NSString* topic;
+@end
+
+@implementation SendMessageRequest200
+
+- (BOOL) hasAccessToken {
+  return !!hasAccessToken_;
+}
+- (void) setHasAccessToken:(BOOL) _value_ {
+  hasAccessToken_ = !!_value_;
+}
+@synthesize accessToken;
+- (BOOL) hasFrom {
+  return !!hasFrom_;
+}
+- (void) setHasFrom:(BOOL) _value_ {
+  hasFrom_ = !!_value_;
+}
+@synthesize pb_from;
+- (BOOL) hasTo {
+  return !!hasTo_;
+}
+- (void) setHasTo:(BOOL) _value_ {
+  hasTo_ = !!_value_;
+}
+@synthesize to;
+- (BOOL) hasText {
+  return !!hasText_;
+}
+- (void) setHasText:(BOOL) _value_ {
+  hasText_ = !!_value_;
+}
+@synthesize text;
+- (BOOL) hasTopic {
+  return !!hasTopic_;
+}
+- (void) setHasTopic:(BOOL) _value_ {
+  hasTopic_ = !!_value_;
+}
+@synthesize topic;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.accessToken = @"";
+    self.pb_from = @"";
+    self.to = @"";
+    self.text = @"";
+    self.topic = @"";
+  }
+  return self;
+}
+static SendMessageRequest200* defaultSendMessageRequest200Instance = nil;
++ (void) initialize {
+  if (self == [SendMessageRequest200 class]) {
+    defaultSendMessageRequest200Instance = [[SendMessageRequest200 alloc] init];
+  }
+}
++ (instancetype) defaultInstance {
+  return defaultSendMessageRequest200Instance;
+}
+- (instancetype) defaultInstance {
+  return defaultSendMessageRequest200Instance;
+}
+- (BOOL) isInitialized {
+  if (!self.hasAccessToken) {
+    return NO;
+  }
+  if (!self.hasFrom) {
+    return NO;
+  }
+  if (!self.hasTo) {
+    return NO;
+  }
+  if (!self.hasText) {
+    return NO;
+  }
+  if (!self.hasTopic) {
+    return NO;
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasAccessToken) {
+    [output writeString:1 value:self.accessToken];
+  }
+  if (self.hasFrom) {
+    [output writeString:2 value:self.pb_from];
+  }
+  if (self.hasTo) {
+    [output writeString:3 value:self.to];
+  }
+  if (self.hasText) {
+    [output writeString:4 value:self.text];
+  }
+  if (self.hasTopic) {
+    [output writeString:5 value:self.topic];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasAccessToken) {
+    size_ += computeStringSize(1, self.accessToken);
+  }
+  if (self.hasFrom) {
+    size_ += computeStringSize(2, self.pb_from);
+  }
+  if (self.hasTo) {
+    size_ += computeStringSize(3, self.to);
+  }
+  if (self.hasText) {
+    size_ += computeStringSize(4, self.text);
+  }
+  if (self.hasTopic) {
+    size_ += computeStringSize(5, self.topic);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (SendMessageRequest200*) parseFromData:(NSData*) data {
+  return (SendMessageRequest200*)[[[SendMessageRequest200 builder] mergeFromData:data] build];
+}
++ (SendMessageRequest200*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (SendMessageRequest200*)[[[SendMessageRequest200 builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (SendMessageRequest200*) parseFromInputStream:(NSInputStream*) input {
+  return (SendMessageRequest200*)[[[SendMessageRequest200 builder] mergeFromInputStream:input] build];
+}
++ (SendMessageRequest200*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (SendMessageRequest200*)[[[SendMessageRequest200 builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (SendMessageRequest200*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (SendMessageRequest200*)[[[SendMessageRequest200 builder] mergeFromCodedInputStream:input] build];
+}
++ (SendMessageRequest200*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (SendMessageRequest200*)[[[SendMessageRequest200 builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (SendMessageRequest200Builder*) builder {
+  return [[SendMessageRequest200Builder alloc] init];
+}
++ (SendMessageRequest200Builder*) builderWithPrototype:(SendMessageRequest200*) prototype {
+  return [[SendMessageRequest200 builder] mergeFrom:prototype];
+}
+- (SendMessageRequest200Builder*) builder {
+  return [SendMessageRequest200 builder];
+}
+- (SendMessageRequest200Builder*) toBuilder {
+  return [SendMessageRequest200 builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasAccessToken) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"accessToken", self.accessToken];
+  }
+  if (self.hasFrom) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"pb_from", self.pb_from];
+  }
+  if (self.hasTo) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"to", self.to];
+  }
+  if (self.hasText) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"text", self.text];
+  }
+  if (self.hasTopic) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"topic", self.topic];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (void) storeInDictionary:(NSMutableDictionary *)dictionary {
+  if (self.hasAccessToken) {
+    [dictionary setObject: self.accessToken forKey: @"accessToken"];
+  }
+  if (self.hasFrom) {
+    [dictionary setObject: self.pb_from forKey: @"pb_from"];
+  }
+  if (self.hasTo) {
+    [dictionary setObject: self.to forKey: @"to"];
+  }
+  if (self.hasText) {
+    [dictionary setObject: self.text forKey: @"text"];
+  }
+  if (self.hasTopic) {
+    [dictionary setObject: self.topic forKey: @"topic"];
+  }
+  [self.unknownFields storeInDictionary:dictionary];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[SendMessageRequest200 class]]) {
+    return NO;
+  }
+  SendMessageRequest200 *otherMessage = other;
+  return
+      self.hasAccessToken == otherMessage.hasAccessToken &&
+      (!self.hasAccessToken || [self.accessToken isEqual:otherMessage.accessToken]) &&
+      self.hasFrom == otherMessage.hasFrom &&
+      (!self.hasFrom || [self.pb_from isEqual:otherMessage.pb_from]) &&
+      self.hasTo == otherMessage.hasTo &&
+      (!self.hasTo || [self.to isEqual:otherMessage.to]) &&
+      self.hasText == otherMessage.hasText &&
+      (!self.hasText || [self.text isEqual:otherMessage.text]) &&
+      self.hasTopic == otherMessage.hasTopic &&
+      (!self.hasTopic || [self.topic isEqual:otherMessage.topic]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasAccessToken) {
+    hashCode = hashCode * 31 + [self.accessToken hash];
+  }
+  if (self.hasFrom) {
+    hashCode = hashCode * 31 + [self.pb_from hash];
+  }
+  if (self.hasTo) {
+    hashCode = hashCode * 31 + [self.to hash];
+  }
+  if (self.hasText) {
+    hashCode = hashCode * 31 + [self.text hash];
+  }
+  if (self.hasTopic) {
+    hashCode = hashCode * 31 + [self.topic hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface SendMessageRequest200Builder()
+@property (strong) SendMessageRequest200* resultSendMessageRequest200;
+@end
+
+@implementation SendMessageRequest200Builder
+@synthesize resultSendMessageRequest200;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.resultSendMessageRequest200 = [[SendMessageRequest200 alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return resultSendMessageRequest200;
+}
+- (SendMessageRequest200Builder*) clear {
+  self.resultSendMessageRequest200 = [[SendMessageRequest200 alloc] init];
+  return self;
+}
+- (SendMessageRequest200Builder*) clone {
+  return [SendMessageRequest200 builderWithPrototype:resultSendMessageRequest200];
+}
+- (SendMessageRequest200*) defaultInstance {
+  return [SendMessageRequest200 defaultInstance];
+}
+- (SendMessageRequest200*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (SendMessageRequest200*) buildPartial {
+  SendMessageRequest200* returnMe = resultSendMessageRequest200;
+  self.resultSendMessageRequest200 = nil;
+  return returnMe;
+}
+- (SendMessageRequest200Builder*) mergeFrom:(SendMessageRequest200*) other {
+  if (other == [SendMessageRequest200 defaultInstance]) {
+    return self;
+  }
+  if (other.hasAccessToken) {
+    [self setAccessToken:other.accessToken];
+  }
+  if (other.hasFrom) {
+    [self setFrom:other.pb_from];
+  }
+  if (other.hasTo) {
+    [self setTo:other.to];
+  }
+  if (other.hasText) {
+    [self setText:other.text];
+  }
+  if (other.hasTopic) {
+    [self setTopic:other.topic];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (SendMessageRequest200Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (SendMessageRequest200Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        [self setAccessToken:[input readString]];
+        break;
+      }
+      case 18: {
+        [self setFrom:[input readString]];
+        break;
+      }
+      case 26: {
+        [self setTo:[input readString]];
+        break;
+      }
+      case 34: {
+        [self setText:[input readString]];
+        break;
+      }
+      case 42: {
+        [self setTopic:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasAccessToken {
+  return resultSendMessageRequest200.hasAccessToken;
+}
+- (NSString*) accessToken {
+  return resultSendMessageRequest200.accessToken;
+}
+- (SendMessageRequest200Builder*) setAccessToken:(NSString*) value {
+  resultSendMessageRequest200.hasAccessToken = YES;
+  resultSendMessageRequest200.accessToken = value;
+  return self;
+}
+- (SendMessageRequest200Builder*) clearAccessToken {
+  resultSendMessageRequest200.hasAccessToken = NO;
+  resultSendMessageRequest200.accessToken = @"";
+  return self;
+}
+- (BOOL) hasFrom {
+  return resultSendMessageRequest200.hasFrom;
+}
+- (NSString*) pb_from {
+  return resultSendMessageRequest200.pb_from;
+}
+- (SendMessageRequest200Builder*) setFrom:(NSString*) value {
+  resultSendMessageRequest200.hasFrom = YES;
+  resultSendMessageRequest200.pb_from = value;
+  return self;
+}
+- (SendMessageRequest200Builder*) clearFrom {
+  resultSendMessageRequest200.hasFrom = NO;
+  resultSendMessageRequest200.pb_from = @"";
+  return self;
+}
+- (BOOL) hasTo {
+  return resultSendMessageRequest200.hasTo;
+}
+- (NSString*) to {
+  return resultSendMessageRequest200.to;
+}
+- (SendMessageRequest200Builder*) setTo:(NSString*) value {
+  resultSendMessageRequest200.hasTo = YES;
+  resultSendMessageRequest200.to = value;
+  return self;
+}
+- (SendMessageRequest200Builder*) clearTo {
+  resultSendMessageRequest200.hasTo = NO;
+  resultSendMessageRequest200.to = @"";
+  return self;
+}
+- (BOOL) hasText {
+  return resultSendMessageRequest200.hasText;
+}
+- (NSString*) text {
+  return resultSendMessageRequest200.text;
+}
+- (SendMessageRequest200Builder*) setText:(NSString*) value {
+  resultSendMessageRequest200.hasText = YES;
+  resultSendMessageRequest200.text = value;
+  return self;
+}
+- (SendMessageRequest200Builder*) clearText {
+  resultSendMessageRequest200.hasText = NO;
+  resultSendMessageRequest200.text = @"";
+  return self;
+}
+- (BOOL) hasTopic {
+  return resultSendMessageRequest200.hasTopic;
+}
+- (NSString*) topic {
+  return resultSendMessageRequest200.topic;
+}
+- (SendMessageRequest200Builder*) setTopic:(NSString*) value {
+  resultSendMessageRequest200.hasTopic = YES;
+  resultSendMessageRequest200.topic = value;
+  return self;
+}
+- (SendMessageRequest200Builder*) clearTopic {
+  resultSendMessageRequest200.hasTopic = NO;
+  resultSendMessageRequest200.topic = @"";
+  return self;
+}
+@end
+
 @interface SendMessageResponse ()
 @property SInt32 errCode;
 @property (strong) NSString* errMsg;
