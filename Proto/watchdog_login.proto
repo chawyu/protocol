@@ -1,0 +1,31 @@
+
+
+package watchdog;
+
+message create {
+    required string name = 1;
+    optional uint32 sex = 2;
+    optional string phone = 3;
+}
+message create_ack {
+    required string pid = 1;
+    required uint32 code = 2;
+    optional string code_msg = 3;
+}
+
+message login {
+    required string pid = 1;
+    required string secret = 2;
+}
+message login_ack {
+    required uint32 code = 1;
+    optional string code_msg = 2;
+}
+message HelloRequest{
+    required string user = 1;
+    required string text = 2;
+}
+message HelloResponse{
+    required int32 retcode = 1;
+    optional string errmsg = 2;
+}
