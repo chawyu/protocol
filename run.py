@@ -1,11 +1,11 @@
 import sys
 import os
 import glob
-proto_path = "./Proto/"
-server_path = "./Server/"
-client_path = "./Client/"
+proto_path = "./proto/"
+server_path = "./server/"
+client_path = "./client/"
 def run():
-    for filename in glob.glob(r'./Proto/*.proto'):
+    for filename in glob.glob(r'./proto/*.proto'):
         base = os.path.basename(filename)
         dir = os.path.dirname(filename)
         name = os.path.splitext(base)

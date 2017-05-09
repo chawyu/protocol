@@ -1,0 +1,29 @@
+package base;
+
+enum Test{
+    TEST_ID = 0x0010;
+}
+
+enum MessageCmdId{
+    CMDID_C2S_MESSAGE_DATA      = 0x0100;
+    CMDID_S2C_MESSAGE_DATA      = 0x0101;
+    CMDID_C2S_MESSAGE_SEND      = 0x0102;
+    CMDID_S2C_MESSAGE_SEND      = 0x0103;
+    CMDID_CPS_MESSAGE_SEND      = 0x0104;
+    CMDID_SPC_MESSAGE_SEND      = 0x0105;
+}
+
+
+message SendMessageResponse {
+
+    enum Error {
+        ERR_OK = 0;
+        ERR_SYS = -1;
+    }
+
+    required int32 err_code = 1;
+    required string err_msg = 2;
+    required string from = 3;
+    required string text = 4;
+    required string topic = 5;
+}

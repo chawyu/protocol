@@ -1,6 +1,5 @@
-
-
 package game;
+import "base.proto";
 message player_info{
     required string pid = 1;
     required string name = 2;

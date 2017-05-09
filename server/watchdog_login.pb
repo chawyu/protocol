@@ -1,6 +1,6 @@
 
 Æ
-Proto/watchdog_login.protowatchdog"2
+proto/watchdog_login.protowatchdog"2
 create
 name (	
 sex (
